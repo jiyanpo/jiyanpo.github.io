@@ -64,7 +64,7 @@
     <article id="post-姬延坡" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2015/10/12/姬延坡/" class="article-date">
-  <time datetime="2015-10-12T03:43:02.000Z" itemprop="datePublished">2015-10-12</time>
+  <time datetime="2015-10-12T03:53:31.000Z" itemprop="datePublished">2015-10-12</time>
 </a>
     
   </div>
@@ -74,12 +74,59 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>title: 第一篇简历<br>date: 2015-10-10 15:30:53<br>tags:</p>
-<p>#####第一篇个人简历：Hello，Wold!</p>
+<p>###第一篇个人博客：Hello，World!(博客搭建介绍)</p>
+<p>####这些天一直在搭建博客，由于没有网站所以在github上建了一个仓库用于托管，将博客的内容放在里边，现在给大家介绍一下如何利用github搭建博客:</p>
+<p>#Mac搭建Hexo指南</p>
+<p>##亲身搭建成功，总结的步骤</p>
+<ol>
+<li><p>安装brew包管理器，Mac自带ruby命令</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ruby <span class="operator">-e</span> <span class="string">"<span class="variable">$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)</span>"</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安装Nodejs</p>
+ <figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">brew </span>install node</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安装hexo</p>
+ <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm config <span class="operator"><span class="keyword">set</span> registry=<span class="string">"http://registry.cnpmjs.org"</span></span><br><span class="line">sudo npm <span class="keyword">install</span> -<span class="keyword">g</span> hexo</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>初始化hexo</p>
+ <figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo <span class="keyword">init</span> &lt;folder&gt;  #执行<span class="keyword">init</span>命令初始化hexo到你指定的目录</span><br><span class="line">例如:hexo <span class="keyword">init</span> hexo,则会在当前目录下生成hexo目录</span><br><span class="line">以下命令在hexo目录下执行。</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安装依赖包</p>
+ <figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm <span class="keyword">install</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>生成静态网页</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"> <span class="title">hexo</span> generate <span class="comment">#自动根据当前目录下文件,生成静态网页</span></span><br><span class="line">或者hexo g</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>运行本地服务</p>
+<figure class="highlight axapta"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo <span class="keyword">server</span></span><br><span class="line">或者hexo s</span><br></pre></td></tr></table></figure>
+<p>此时在浏览器中输入：<code>localhost:4000</code>，可查看静态的网页</p>
+</li>
+<li><p>添加博文</p>
+ <figure class="highlight axapta"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo <span class="keyword">new</span> <span class="string">"postName"</span>  <span class="preprocessor">#新建博文,其中postName是博文题目</span></span><br><span class="line">例如：hexo n <span class="string">"青云"</span></span><br></pre></td></tr></table></figure>
+<p> 刷新上述静态网页，可看到新添加的一篇博文。</p>
+<p> <em>PS:</em>博文会自动生成在博客目录下source/_posts/postName.md</p>
+</li>
+<li><p>部署到github</p>
+<ol>
+<li>打开github.com,注册github账户，如名字username，创建仓库仓库username.github.io</li>
+<li><p>配置ssh-key</p>
+ <figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git config --global user<span class="class">.email</span> <span class="string">"你的邮箱"</span></span><br><span class="line">git config --global user<span class="class">.name</span> <span class="string">"你的用户名"</span></span><br><span class="line">ssh-keygen -t rsa -C <span class="string">"你的邮箱"</span></span><br><span class="line">回车三次，在~/.ssh/下会生成id_rsa和id_rsa.pub两个文件</span><br><span class="line">复制id_rsa.pub文件内容到github账户下的ssh keys的新建key里面，ADD。</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改hexo目录下_config.yml,在最后添加以下内容</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">deploy</span>:</span><br><span class="line"> 	<span class="attribute">type</span>: git</span><br><span class="line"> 	<span class="attribute">repository</span>: git<span class="variable">@github</span>.<span class="attribute">com</span>:username/username.github.io.git</span><br><span class="line"> 	<span class="attribute">branch</span>: master</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>执行<code>npm install hexo-deployer-git --save</code></p>
+</li>
+<li>执行<code>hexo g</code>和<code>hexo d</code>完成部署</li>
+</ol>
+</li>
+<li>打开浏览器并输入username.github.io来查看你的博客</li>
+</ol>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/10/12/姬延坡/" data-id="cifnea85k0002kp0kcndo8dmj" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/10/12/姬延坡/" data-id="cifnef27h0002li0kdibhrhoe" class="article-share-link">Share</a>
       
       
     </footer>
@@ -124,7 +171,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/10/12/hello-world/" data-id="cifnea84i0000kp0k7fnai79j" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/10/12/hello-world/" data-id="cifnef26l0000li0k01wfklp8" class="article-share-link">Share</a>
       
       
     </footer>
@@ -161,7 +208,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/10/10/青云/" data-id="cifnea85c0001kp0k0vkzhz3n" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/10/10/青云/" data-id="cifnef27e0001li0khzt2emjt" class="article-share-link">Share</a>
       
       
     </footer>
